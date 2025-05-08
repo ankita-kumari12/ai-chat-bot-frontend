@@ -2,6 +2,7 @@ const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
 
+
 // appent message to existing message...
 const appendMessage = (text, isUser = false) => {
   const message = document.createElement("div");
@@ -29,7 +30,7 @@ sendBtn.addEventListener("click", async () => {
 
 
   try {
-    const aiResponseRaw = await fetch("http://localhost:5000/api/chat", {
+    const aiResponseRaw = await fetch(`http://localhost:5000/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

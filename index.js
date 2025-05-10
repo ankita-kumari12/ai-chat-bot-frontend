@@ -6,12 +6,20 @@ const sendBtn = document.getElementById("send-btn");
 // appent message to existing message...
 const appendMessage = (text, isUser = false) => {
   const message = document.createElement("div");
-  message.className = `w-fit max-w-[75%] px-4 py-2 rounded-2xl shadow-md  text-base whitespace-pre-wrap break-words ${
+  message.className = `w-fit max-w-[75%] px-4 py-2 flex gap-4 rounded-2xl shadow-md  text-base whitespace-pre-wrap break-words ${
     isUser
       ? "bg-gradient-to-br from-blue-500 to-purple-500 text-white self-end ml-auto"
       : "bg-white text-gray-800 border border-gray-200"
   }`;
-  message.textContent = text;
+
+  const icon = document.createElement("img");
+  icon.className = `w-8 h-8 bg-white rounded-full`
+  const src = isUser ? "./assets/user.png" : "./assets/bot.png"; 
+  icon.setAttribute("src", src);
+  message.appendChild(icon);
+  const paragraph = document.createElement("p");
+  paragraph.textContent = text;
+  message.appendChild(paragraph);
   chatWindow.appendChild(message);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 };
@@ -22,12 +30,11 @@ sendBtn.addEventListener("click", async () => {
   // console.log("user input:", prompt);
 
   if (!prompt) {
-    console.log("Please provide a prompt.");
     return;
   }
+  
   appendMessage(prompt, true);
   userInput.value = "";
-
 
   try {
     const aiResponseRaw = await fetch(`https://bot-ai-2z06.onrender.com/api/chat`, {

@@ -38,7 +38,7 @@ sendBtn.addEventListener("click", async () => {
   userInput.value = "";
 
   try {
-    const aiResponseRaw = await fetch(`http://localhost:5001/api/chat`, {
+    const aiResponseRaw = await fetch(`https://bot-ai-2z06.onrender.com`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

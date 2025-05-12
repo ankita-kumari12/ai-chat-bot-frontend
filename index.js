@@ -9,7 +9,7 @@ const appendMessage = (text, isUser = false) => {
   message.className = `w-fit  px-4 py-2 flex gap-4 rounded-2xl shadow-md  text-base whitespace-pre-wrap break-words ${
     isUser
       ? "bg-gradient-to-br from-blue-500 to-purple-500 max-w-[75%] text-white self-end ml-auto"
-      : "text-gray-800 border border-gray-200 text-wrap"
+      : "text-gray-800 flex flex-col border border-gray-200 text-wrap"
   }`;
 
   const icon = document.createElement("img");
